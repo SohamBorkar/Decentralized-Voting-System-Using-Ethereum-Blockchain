@@ -6,16 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "browserify src/index.js -o dist/bundle.js"
-
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "browserify": "^17.0.1",
     "@truffle/contract": "^4.6.18",
+    "browserify": "^17.0.1",
+    "buffer": "^6.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "process": "^0.11.10",
+    "util": "^0.12.5",
     "web3": "^1.9.0"
   },
   "devDependencies": {
