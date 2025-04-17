@@ -5502,12 +5502,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x5C8d3547224C9ad86a992841EaBD62fa2D432aC5",
-      "transactionHash": "0xdf1e62765f80b424e26c9356ea88612d40791b3b546ebbad24b11a4fd52004aa"
+      "address": "0xF2af2983ec28EC282628776480D6CA9e7Ff0A9F8",
+      "transactionHash": "0x67ac28b60118670d42824f727f0da19e5cdcc0de1d6e676c60fc09b50b08b6e4"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-04-15T09:26:27.558Z",
+  "updatedAt": "2025-04-17T18:04:24.024Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

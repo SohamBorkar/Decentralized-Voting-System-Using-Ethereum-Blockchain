@@ -31,8 +31,16 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/html/login.html'));
 });
 
+app.get('/register', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/html/register.html'));
+});
+
 app.get('/js/login.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/js/login.js'))
+});
+
+app.get('/js/register.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/js/register.js'))
 });
 
 app.get('/css/login.css', (req, res) => {
