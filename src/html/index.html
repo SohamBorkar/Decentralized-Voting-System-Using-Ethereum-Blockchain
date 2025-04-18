@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <style>
-      .logout-btn, .results-btn {
+      .logout-btn {
         background-color: #dc3545;
         color: white;
         padding: 8px 15px;
@@ -23,10 +23,6 @@
         margin-top: 20px;
         display: flex;
         justify-content: center;
-        gap: 20px;
-      }
-      .results-btn {
-        background-color: #28a745;
       }
     </style>
   </head>
@@ -63,18 +59,11 @@
     </div>
 
     <div class="btn-container">
-      <button class="results-btn" id="viewResultsBtn">View Voting Results</button>
       <button class="logout-btn" onclick="window.location.href='/'">Logout</button>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="../dist/app.bundle.js" type="module"></script>
-    <script>
-      document.getElementById('viewResultsBtn').addEventListener('click', function() {
-        const token = new URLSearchParams(window.location.search).get('Authorization');
-        window.location.href = `/results.html?from=user&Authorization=${token}`;
-      });
-    </script>
   </body>
 </html>
