@@ -27,21 +27,69 @@ window.App = {
 
             });   
               $('#addDate').click(function(){             
-                  var startDate = Date.parse(document.getElementById("startDate").value)/1000;
-
-                  var endDate =  Date.parse(document.getElementById("endDate").value)/1000;
-           
-                  instance.setDates(startDate,endDate).then(function(rslt){ 
-                    console.log("tarihler verildi");
-                  });
-
+                  // Get the date values from the input fields
+                  const startDateStr = document.getElementById("startDate").value;
+                  const endDateStr = document.getElementById("endDate").value;
+                  
+                  if (!startDateStr || !endDateStr) {
+                    alert("Please select both start and end dates");
+                    return;
+                  }
+                  
+                  // Add time component to ensure dates are set properly (noon on the selected day)
+                  const startDate = Math.floor(new Date(startDateStr + "T12:00:00").getTime() / 1000);
+                  const endDate = Math.floor(new Date(endDateStr + "T23:59:59").getTime() / 1000);
+                  
+                  // Check if dates are valid
+                  if (isNaN(startDate) || isNaN(endDate)) {
+                    alert("Invalid date format. Please select valid dates.");
+                    return;
+                  }
+                  
+                  // Check if end date is after start date
+                  if (endDate <= startDate) {
+                    alert("End date must be after start date");
+                    return;
+                  }
+                  
+                  // Get current timestamp for comparison
+                  const now = Math.floor(Date.now() / 1000);
+                  
+                  // Check if start date is in the future (with some buffer)
+                  if (startDate < now - 3600) { // Allow 1 hour buffer for blockchain processing
+                    alert("Start date must be in the future");
+                    return;
+                  }
+                  
+                  console.log(`Setting voting period: ${new Date(startDate * 1000).toLocaleString()} to ${new Date(endDate * 1000).toLocaleString()}`);
+                  
+                  instance.setDates(startDate, endDate)
+                    .then(function(result) { 
+                      console.log("Voting dates set successfully");
+                      alert("Voting dates set successfully");
+                      
+                      // Update the display
+                      const startDateDisplay = new Date(startDate * 1000);
+                      const endDateDisplay = new Date(endDate * 1000);
+                      $("#dates").text(startDateDisplay.toDateString() + " - " + endDateDisplay.toDateString());
+                    })
+                    .catch(function(error) {
+                      console.error("Error setting dates:", error);
+                      alert("Error setting voting dates: " + (error.message || "Unknown error"));
+                    });
               });     
 
                instance.getDates().then(function(result){
-                var startDate = new Date(result[0]*1000);
-                var endDate = new Date(result[1]*1000);
+                // Convert blockchain timestamps (seconds) to JavaScript Date objects (milliseconds)
+                var startDate = new Date(result[0] * 1000);
+                var endDate = new Date(result[1] * 1000);
 
-                $("#dates").text( startDate.toDateString(("#DD#/#MM#/#YYYY#")) + " - " + endDate.toDateString("#DD#/#MM#/#YYYY#"));
+                $("#dates").text(startDate.toDateString() + " - " + endDate.toDateString());
+                
+                // Add timestamp debugging
+                console.log("Voting start timestamp:", result[0].toString());
+                console.log("Voting end timestamp:", result[1].toString());
+                console.log("Current time:", Math.floor(Date.now() / 1000));
               }).catch(function(err){ 
                 console.error("ERROR! " + err.message)
               });           
@@ -80,15 +128,43 @@ window.App = {
       $("#msg").html("<p>Please vote for a candidate.</p>")
       return
     }
+    
+    $("#msg").html("<p>Processing your vote, please wait...</p>");
+    
     VotingContract.deployed().then(function(instance){
+      // Direct vote without client-side validation - let the smart contract handle date validation
       instance.vote(parseInt(candidateID)).then(function(result){
         $("#voteButton").attr("disabled", true);
-        $("#msg").html("<p>Voted</p>");
-         window.location.reload(1);
+        $("#msg").html("<p style='color: green;'>Your vote has been recorded successfully!</p>");
+        
+        // Wait a moment before reloading to show success message
+        setTimeout(function() {
+          window.location.reload(1);
+        }, 2000);
       })
+      .catch(function(err){
+        // Extract the reason from the error message
+        console.error("ERROR! " + err.message);
+        
+        let errorMessage = "An error occurred while processing your vote.";
+        
+        // Check for specific voting error messages from the smart contract
+        if (err.message.includes("Voting is not currently active")) {
+          errorMessage = "Voting is not currently active. Please check the voting dates.";
+        } else if (err.message.includes("You have already voted")) {
+          errorMessage = "You have already voted in this election.";
+        } else if (err.message.includes("Invalid candidate ID")) {
+          errorMessage = "Invalid candidate selection.";
+        } else if (err.message.includes("denied transaction signature")) {
+          errorMessage = "Transaction was rejected in MetaMask. Please try again.";
+        }
+        
+        $("#msg").html(`<p style="color: red;">${errorMessage}</p>`);
+      });
     }).catch(function(err){ 
-      console.error("ERROR! " + err.message)
-    })
+      console.error("ERROR! " + err.message);
+      $("#msg").html(`<p style="color: red;">Failed to connect to voting contract. Please try again.</p>`);
+    });
   }
 }
 

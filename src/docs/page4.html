@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decentralized Voting System - Web3 & MetaMask</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <a href="/docs" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Contents</a>
+    
+    <div class="page-header">
+      <h1><i class="fas fa-wallet"></i> Web3 & MetaMask</h1>
+      <p class="subtitle">The technologies that connect users to the blockchain voting platform</p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-globe"></i> What Is Web3?</h2>
+      <p>
+        Web3 represents the next evolution of the internet, moving from:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-book"></i> Web1 (1990s-2000s):</strong> Read-only, static websites</p>
+        <p><strong><i class="fas fa-comments"></i> Web2 (2000s-present):</strong> Interactive sites where users create content, but companies control the data</p>
+        <p><strong><i class="fas fa-link"></i> Web3 (emerging):</strong> Decentralized applications where users own their data and interactions happen without intermediaries</p>
+      </div>
+      
+      <p>
+        In technical terms, Web3 is a collection of JavaScript libraries that allow web applications to interact 
+        with blockchain networks (like Ethereum) directly from the browser. It's the bridge that connects 
+        regular websites to the blockchain world.
+      </p>
+      
+      <div class="tip">
+        <strong>Key Point:</strong> Web3 enables our voting application to communicate with the Ethereum blockchain, allowing users to 
+        cast votes that are recorded directly on the blockchain without intermediaries.
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fab fa-ethereum"></i> What Is MetaMask?</h2>
+      <p>
+        MetaMask is a browser extension and mobile app that serves as:
+      </p>
+      
+      <ul>
+        <li>A digital wallet for storing cryptocurrency (Ether)</li>
+        <li>An identity manager for blockchain applications</li>
+        <li>A gateway for accessing decentralized applications</li>
+        <li>A transaction signer for approving blockchain operations</li>
+      </ul>
+      
+      <p>
+        Think of MetaMask as your digital identity and wallet for the blockchain world. Just like you need 
+        ID to vote in a traditional election, MetaMask provides your blockchain identity for our voting system.
+      </p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cogs"></i> How Web3 and MetaMask Work in Our Voting System</h2>
+      
+      <h3><i class="fas fa-user-check"></i> User Authentication</h3>
+      <p>
+        Instead of traditional username/password combinations, our voting system uses MetaMask to authenticate voters:
+      </p>
+      <ol>
+        <li>When a user logs in, the application requests access to their MetaMask wallet</li>
+        <li>MetaMask provides the application with the user's Ethereum address (like a unique ID)</li>
+        <li>This address is checked against our database of registered voters</li>
+        <li>If verified, the user can access the voting interface</li>
+      </ol>
+      
+      <h3><i class="fas fa-vote-yea"></i> Vote Casting Process</h3>
+      <p>
+        When a voter selects a candidate and clicks "Vote":
+      </p>
+      <ol>
+        <li>The Web3 library prepares a transaction to call the smart contract's voting function</li>
+        <li>MetaMask displays a popup asking the user to confirm the transaction</li>
+        <li>The user reviews and approves the transaction with their digital signature</li>
+        <li>The transaction is sent to the Ethereum network and processed</li>
+        <li>Once confirmed, the vote is permanently recorded on the blockchain</li>
+      </ol>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-rocket"></i> Why This Approach Is Revolutionary</h2>
+      
+      <h3><i class="fas fa-lock"></i> Security</h3>
+      <p>
+        Only the voter can authorize transactions from their account. No one—not even the administrators of the 
+        voting system—can cast a vote on someone else's behalf. This is because the private keys needed to sign 
+        transactions never leave the user's MetaMask wallet.
+      </p>
+      
+      <h3><i class="fas fa-fingerprint"></i> Decentralized Identity</h3>
+      <p>
+        MetaMask provides a decentralized identity system where users maintain control of their own credentials. 
+        There's no central database of usernames and passwords that could be hacked or compromised.
+      </p>
+      
+      <h3><i class="fas fa-eye"></i> Transparency with Privacy</h3>
+      <p>
+        While all transactions are public on the blockchain, voters can verify their own votes without revealing 
+        who they voted for to others. This balances the need for transparency with the right to privacy.
+      </p>
+      
+      <h3><i class="fas fa-users"></i> Ownership of the Voting Process</h3>
+      <p>
+        By using Web3 and MetaMask, voters become active participants in the security of the election, 
+        not just passive users of a system controlled by others.
+      </p>
+    </div>
+    
+    <div class="chapter-nav">
+      <a href="/docs/page3.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Ethereum & Smart Contracts</a>
+      <a href="/docs" class="btn btn-secondary"><i class="fas fa-home"></i> Main Menu</a>
+      <a href="/docs/page5.html" class="btn btn-primary">Continue to Frontend Technologies <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="page-footer">
+      <p>Page 4 of 8</p>
+    </div>
+  </div>
+</body>
+</html> 

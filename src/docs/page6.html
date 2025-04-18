@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decentralized Voting System - Backend Technologies</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <a href="/docs" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Contents</a>
+    
+    <div class="page-header">
+      <h1><i class="fas fa-server"></i> Backend Technologies</h1>
+      <p class="subtitle">The server-side components that power our decentralized voting platform</p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cogs"></i> What Is a Backend and Why Is It Needed?</h2>
+      <p>
+        While the frontend is everything users see and interact with, the backend is the "behind-the-scenes" 
+        part of the application that:
+      </p>
+      <ul>
+        <li>Processes user requests and data</li>
+        <li>Communicates with databases and other services</li>
+        <li>Enforces business rules and security</li>
+        <li>Generates dynamic content for the frontend</li>
+      </ul>
+      
+      <div class="tip">
+        <strong>Key Point:</strong> Even though our voting records are stored on the blockchain, we still need a traditional backend 
+        to handle user management, authentication, and to serve the web application itself.
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fab fa-node-js"></i> Node.js: JavaScript on the Server</h2>
+      <p>
+        Node.js is a JavaScript runtime that allows developers to use JavaScript for server-side programming. 
+        Traditionally, different languages were used for frontend (JavaScript) and backend (like PHP, Java, or Python), 
+        but Node.js changed this by enabling JavaScript to run outside the browser.
+      </p>
+      
+      <p>
+        Key benefits of Node.js in our application:
+      </p>
+      <ul class="feature-list">
+        <li><i class="fas fa-code"></i> <strong>JavaScript Everywhere:</strong> Same language on frontend and backend for consistency</li>
+        <li><i class="fas fa-bolt"></i> <strong>Non-Blocking I/O:</strong> Efficiently handles many concurrent users</li>
+        <li><i class="fas fa-box-open"></i> <strong>NPM Ecosystem:</strong> Access to thousands of ready-to-use packages</li>
+        <li><i class="fas fa-file-code"></i> <strong>Native JSON Support:</strong> Perfect for data exchange with modern web applications</li>
+      </ul>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-rocket"></i> Express: Web Framework for Node.js</h2>
+      <p>
+        Express is a minimal and flexible Node.js web application framework that provides a set of features 
+        for building web and mobile applications. It simplifies common web development tasks and helps organize 
+        application features.
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-route"></i> Routing:</strong> Directs different user requests to the appropriate handling code</p>
+        <p><strong><i class="fas fa-layer-group"></i> Middleware:</strong> Functions that process requests before they reach the final handler</p>
+        <p><strong><i class="fas fa-cube"></i> API Creation:</strong> Simplified tools for building REST APIs</p>
+        <p><strong><i class="fas fa-file"></i> Static File Serving:</strong> Efficiently delivers HTML, CSS, and JavaScript files to browsers</p>
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-puzzle-piece"></i> Key Backend Components in Our Voting System</h2>
+      
+      <h3><i class="fas fa-lock"></i> User Authentication System</h3>
+      <p>
+        Our backend implements a secure authentication system using:
+      </p>
+      <ul>
+        <li><strong>JWT (JSON Web Tokens):</strong> Secure tokens for maintaining user sessions</li>
+        <li><strong>Password Handling:</strong> Secure storage and verification of user credentials</li>
+        <li><strong>Role-Based Access Control:</strong> Different permissions for voters and administrators</li>
+        <li><strong>Session Management:</strong> Tracking logged-in users and their activities</li>
+      </ul>
+      
+      <h3><i class="fas fa-bolt"></i> FastAPI for Database Operations</h3>
+      <p>
+        We use FastAPI, a modern Python web framework, to create a high-performance API for database operations:
+      </p>
+      <ul>
+        <li>User registration and profile management</li>
+        <li>Credential verification during login</li>
+        <li>Storing personal information securely</li>
+        <li>Integration with the MySQL database</li>
+      </ul>
+      
+      <h3><i class="fas fa-network-wired"></i> API Endpoints</h3>
+      <p>
+        Our backend exposes several API endpoints that the frontend uses to:
+      </p>
+      <ul>
+        <li>Register new users</li>
+        <li>Authenticate existing users</li>
+        <li>Retrieve candidate information</li>
+        <li>Submit votes to the blockchain</li>
+        <li>Fetch voting results</li>
+      </ul>
+      
+      <h3><i class="fab fa-ethereum"></i> Blockchain Integration Layer</h3>
+      <p>
+        A critical part of our backend is the blockchain integration layer, which:
+      </p>
+      <ul>
+        <li>Connects to the Ethereum network</li>
+        <li>Interacts with our smart contracts</li>
+        <li>Processes blockchain transactions</li>
+        <li>Relays blockchain data to the frontend</li>
+      </ul>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-shield-alt"></i> Security Features</h2>
+      <p>
+        Our backend implements several security measures to protect the voting system:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-ban"></i> CORS Protection:</strong> Prevents unauthorized websites from making requests to our API</p>
+        <p><strong><i class="fas fa-check-circle"></i> Input Validation:</strong> Checks all user inputs to prevent malicious data</p>
+        <p><strong><i class="fas fa-tachometer-alt"></i> Rate Limiting:</strong> Prevents abuse by limiting the number of requests per time period</p>
+        <p><strong><i class="fas fa-heading"></i> Secure Headers:</strong> Implements HTTP headers that enhance security</p>
+        <p><strong><i class="fas fa-exclamation-triangle"></i> Error Handling:</strong> Properly manages errors without exposing sensitive information</p>
+      </div>
+      
+      <p>
+        These security measures, combined with the inherent security of blockchain technology, 
+        create a robust system that protects both the voting process and voter information.
+      </p>
+    </div>
+    
+    <div class="chapter-nav">
+      <a href="/docs/page5.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Frontend Technologies</a>
+      <a href="/docs" class="btn btn-secondary"><i class="fas fa-home"></i> Main Menu</a>
+      <a href="/docs/page7.html" class="btn btn-primary">Continue to Data Management <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="page-footer">
+      <p>Page 6 of 8</p>
+    </div>
+  </div>
+</body>
+</html> 

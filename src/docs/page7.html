@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decentralized Voting System - Data Management</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <a href="/docs" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Contents</a>
+    
+    <div class="page-header">
+      <h1><i class="fas fa-database"></i> Data Management</h1>
+      <p class="subtitle">How user information and voting data are securely handled in our system</p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-layer-group"></i> The Dual Data Storage Approach</h2>
+      <p>
+        Our voting system uses two complementary data storage systems:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-link"></i> Blockchain:</strong> Stores voting records (who voted for whom) in a decentralized, tamper-proof ledger</p>
+        <p><strong><i class="fas fa-table"></i> Traditional Database:</strong> Manages user accounts, identities, and administrative information</p>
+      </div>
+      
+      <p>
+        This dual approach combines the security and transparency of blockchain with the flexibility 
+        and privacy features of traditional databases.
+      </p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-question-circle"></i> Why We Need a Traditional Database</h2>
+      <p>
+        While blockchain is excellent for recording votes, it has limitations that make it unsuitable 
+        for storing all application data:
+      </p>
+      
+      <ul class="feature-list">
+        <li><i class="fas fa-coins"></i> <strong>Cost:</strong> Storing data on blockchain is expensive (requires gas fees)</li>
+        <li><i class="fas fa-user-secret"></i> <strong>Privacy:</strong> Blockchain data is public, but some user information must remain private</li>
+        <li><i class="fas fa-tachometer-alt"></i> <strong>Query Efficiency:</strong> Traditional databases are much faster for complex queries</li>
+        <li><i class="fas fa-edit"></i> <strong>Data Updates:</strong> Information on blockchain is immutable, but user profiles might need updates</li>
+      </ul>
+      
+      <div class="tip">
+        <strong>Key Point:</strong> The database gives us the flexibility to manage users and their information efficiently, while 
+        the blockchain provides the immutable, transparent record of votes that ensures election integrity.
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fab fa-mysql"></i> MySQL Database Structure</h2>
+      <p>
+        Our system uses MySQL, a reliable and widely-used relational database management system. 
+        The database schema includes these key components:
+      </p>
+      
+      <h3><i class="fas fa-users"></i> Voters Table</h3>
+      <p>
+        The main table for user authentication with these fields:
+      </p>
+      <ul>
+        <li><strong>voter_id (UUID):</strong> Unique identifier for each voter (primary key)</li>
+        <li><strong>role:</strong> User role (admin/user) determining access levels</li>
+        <li><strong>password:</strong> Securely stored password for authentication</li>
+      </ul>
+      
+      <h3><i class="fas fa-address-card"></i> Voter Details Table</h3>
+      <p>
+        Stores additional personal information about voters:
+      </p>
+      <ul>
+        <li><strong>id:</strong> Auto-incremented internal identifier</li>
+        <li><strong>voter_id:</strong> Foreign key referencing the voters table</li>
+        <li><strong>full_name:</strong> The voter's complete name</li>
+        <li><strong>aadhar_card:</strong> Unique government ID number (for identity verification)</li>
+        <li><strong>epic_number:</strong> Election ID number (ensures one person = one registration)</li>
+      </ul>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cogs"></i> Database Operations</h2>
+      <p>
+        Our system performs several key database operations:
+      </p>
+      
+      <h3><i class="fas fa-user-plus"></i> User Registration</h3>
+      <p>
+        When a new user registers:
+      </p>
+      <ol>
+        <li>The system generates a UUID for the new voter</li>
+        <li>It checks if the Aadhar card or EPIC number already exists (prevents duplicate registration)</li>
+        <li>It inserts the user's credentials into the voters table</li>
+        <li>It stores personal details in the voter_details table</li>
+        <li>The UUID is returned to the user as their voter ID</li>
+      </ol>
+      
+      <h3><i class="fas fa-sign-in-alt"></i> User Authentication</h3>
+      <p>
+        During login:
+      </p>
+      <ol>
+        <li>The system checks if the provided voter ID exists</li>
+        <li>It verifies the password against the stored value</li>
+        <li>If authentication succeeds, it generates a JWT token containing the user's role</li>
+        <li>This token is used for subsequent authorization of the user's actions</li>
+      </ol>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-shield-alt"></i> Security Considerations</h2>
+      <p>
+        Several measures ensure the security of user data:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-check-circle"></i> Input Validation:</strong> All user inputs are validated to prevent SQL injection</p>
+        <p><strong><i class="fas fa-fingerprint"></i> Unique Constraints:</strong> Database enforces uniqueness of IDs to prevent duplicate registrations</p>
+        <p><strong><i class="fas fa-key"></i> Foreign Key Relationships:</strong> Maintain data integrity across tables</p>
+        <p><strong><i class="fas fa-exclamation-triangle"></i> Error Handling:</strong> Graceful handling of database errors without exposing details</p>
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-plug"></i> Connecting Database and Blockchain</h2>
+      <p>
+        The real power of our system comes from how it connects traditional database identity 
+        management with blockchain voting:
+      </p>
+      
+      <ol>
+        <li>Users register and authenticate using the database system</li>
+        <li>Once authenticated, their Ethereum address from MetaMask is used for blockchain interactions</li>
+        <li>The smart contract tracks which Ethereum addresses have voted</li>
+        <li>This creates a separation between identity (database) and voting records (blockchain)</li>
+        <li>The separation enhances privacy while maintaining verifiability</li>
+      </ol>
+      
+      <p>
+        This hybrid approach provides the best of both worlds: the security and transparency of 
+        blockchain for the critical voting process, and the efficiency and privacy of traditional 
+        databases for user management.
+      </p>
+    </div>
+    
+    <div class="chapter-nav">
+      <a href="/docs/page6.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Backend Technologies</a>
+      <a href="/docs" class="btn btn-secondary"><i class="fas fa-home"></i> Main Menu</a>
+      <a href="/docs/page8.html" class="btn btn-primary">Continue to Benefits & Future Scope <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="page-footer">
+      <p>Page 7 of 8</p>
+    </div>
+  </div>
+</body>
+</html> 

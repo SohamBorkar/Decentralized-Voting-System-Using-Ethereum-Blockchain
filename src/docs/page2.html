@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decentralized Voting System - Blockchain Fundamentals</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <a href="/docs" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Contents</a>
+    
+    <div class="page-header">
+      <h1><i class="fas fa-link"></i> Blockchain Fundamentals</h1>
+      <p class="subtitle">Understanding the core technology that enables secure, decentralized voting</p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cubes"></i> Simple Explanation of Blockchain</h2>
+      <p>
+        Imagine a ledger (like an accounting book) that records all transactions, but instead of being kept in one place:
+      </p>
+      <ul>
+        <li>It's copied and stored on thousands of computers worldwide</li>
+        <li>Each "page" (block) is linked to the previous one through complex math</li>
+        <li>Once written, pages cannot be changed without changing all subsequent pages</li>
+        <li>New pages can only be added when the majority of computers agree they're valid</li>
+      </ul>
+      
+      <div class="tip">
+        <strong>Key Point:</strong> Blockchain is a distributed, decentralized database or ledger that is shared across many computers (nodes). 
+        Once a piece of data (like a vote) is recorded, it cannot be changed without altering all subsequent blocks, 
+        which is practically impossible.
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cogs"></i> How Blockchain Is Used in This Project</h2>
+      <p>
+        In our voting system, blockchain technology serves several crucial functions:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-vote-yea"></i> Votes as Transactions:</strong> Each vote is recorded as a transaction on the blockchain</p>
+        <p><strong><i class="fas fa-file-contract"></i> Smart Contracts:</strong> These are pieces of code that enforce voting rules (e.g., one person = one vote)</p>
+        <p><strong><i class="fas fa-search"></i> Public Verification:</strong> Anyone can verify the results without seeing individual votes</p>
+        <p><strong><i class="fas fa-lock"></i> Immutable Record:</strong> Once cast, votes cannot be changed or deleted</p>
+      </div>
+      
+      <p>
+        When a voter casts their vote, it's processed through a smart contract that checks if they're eligible 
+        and haven't voted before. If these conditions are met, the vote is recorded on the blockchain. This creates 
+        a permanent, tamper-proof record that can be publicly verified while preserving voter anonymity.
+      </p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-star"></i> Why Blockchain Is Important for Voting</h2>
+      <p>
+        Blockchain brings four critical benefits to voting systems:
+      </p>
+      
+      <h3><i class="fas fa-eye"></i> 1. Transparency</h3>
+      <p>
+        Anyone can see the total number of votes and verify the results independently. 
+        This increases trust in the process, as voters don't have to rely on a central authority 
+        to correctly count and report the results.
+      </p>
+      
+      <h3><i class="fas fa-shield-alt"></i> 2. Security</h3>
+      <p>
+        It's practically impossible to alter votes once they're recorded on the blockchain. 
+        This prevents tampering and ensures votes are counted exactly as they were cast.
+      </p>
+      
+      <h3><i class="fas fa-network-wired"></i> 3. Decentralization</h3>
+      <p>
+        No single authority controls the voting system. The results are verified by a distributed network, 
+        eliminating the possibility of manipulation by any single entity.
+      </p>
+      
+      <h3><i class="fas fa-user-secret"></i> 4. Anonymity with Verification</h3>
+      <p>
+        Voters can verify their vote was counted correctly without revealing who they voted for. 
+        This balances the need for privacy with the desire for transparency.
+      </p>
+    </div>
+    
+    <div class="chapter-nav">
+      <a href="/docs/page1.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Real-World Problem Solving</a>
+      <a href="/docs" class="btn btn-secondary"><i class="fas fa-home"></i> Main Menu</a>
+      <a href="/docs/page3.html" class="btn btn-primary">Continue to Ethereum & Smart Contracts <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="page-footer">
+      <p>Page 2 of 8</p>
+    </div>
+  </div>
+</body>
+</html> 

@@ -35,12 +35,34 @@ app.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/html/register.html'));
 });
 
+// Documentation routes - these are publicly accessible
+app.get('/docs', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/docs/index.html'));
+});
+
+app.get('/docs/styles.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/docs/styles.css'));
+});
+
+app.get('/docs/page:num.html', (req, res) => {
+  const pageNum = req.params.num;
+  if (pageNum >= 1 && pageNum <= 8) {
+    res.sendFile(path.join(__dirname, `src/docs/page${pageNum}.html`));
+  } else {
+    res.redirect('/docs');
+  }
+});
+
 app.get('/js/login.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/js/login.js'))
 });
 
 app.get('/js/register.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/js/register.js'))
+});
+
+app.get('/js/results.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/js/results.js'))
 });
 
 app.get('/css/login.css', (req, res) => {
@@ -71,12 +93,20 @@ app.get('/index.html', authorizeUser, (req, res) => {
   res.sendFile(path.join(__dirname, 'src/html/index.html'));
 });
 
+app.get('/results.html', authorizeUser, (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/html/results.html'));
+});
+
 app.get('/dist/login.bundle.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/dist/login.bundle.js'));
 });
 
 app.get('/dist/app.bundle.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'src/dist/app.bundle.js'));
+});
+
+app.get('/dist/results.bundle.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/dist/results.bundle.js'));
 });
 
 // Serve the favicon.ico file

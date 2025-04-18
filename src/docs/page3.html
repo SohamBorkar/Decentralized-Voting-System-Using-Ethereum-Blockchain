@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decentralized Voting System - Ethereum & Smart Contracts</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <a href="/docs" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Contents</a>
+    
+    <div class="page-header">
+      <h1><i class="fas fa-ethernet"></i> Ethereum & Smart Contracts</h1>
+      <p class="subtitle">The backbone technology that enables our decentralized voting platform</p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fab fa-ethereum"></i> What Is Ethereum?</h2>
+      <p>
+        Ethereum is like a global, decentralized computer that runs on blockchain technology. While Bitcoin 
+        was designed primarily as a digital currency, Ethereum was built to do much more:
+      </p>
+      
+      <ul>
+        <li>It's a platform for creating applications that run exactly as programmed</li>
+        <li>It allows developers to create "smart contracts" - self-executing code with rules built in</li>
+        <li>It has its own cryptocurrency called Ether (ETH), which is used to pay for transactions</li>
+        <li>It enables the creation of decentralized applications (dApps) that don't need central servers</li>
+      </ul>
+      
+      <div class="tip">
+        <strong>Key Point:</strong> Think of Ethereum as a world computer that no single entity owns or controls. 
+        It runs applications based on pre-set rules that cannot be changed once deployed.
+      </div>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-file-contract"></i> What Are Smart Contracts?</h2>
+      <p>
+        Smart contracts are self-executing programs that automatically enforce their rules and conditions. 
+        In simple terms:
+      </p>
+      
+      <div class="card">
+        <p><strong><i class="fas fa-handshake"></i> Digital Agreements:</strong> Like traditional contracts but written in code</p>
+        <p><strong><i class="fas fa-robot"></i> Self-Executing:</strong> They run automatically when conditions are met</p>
+        <p><strong><i class="fas fa-shield-alt"></i> Tamper-Proof:</strong> Once deployed, they cannot be altered</p>
+        <p><strong><i class="fas fa-eye"></i> Transparent:</strong> Everyone can see the contract's code and verify its operation</p>
+      </div>
+      
+      <p>
+        Imagine a vending machine: you insert money, select your item, and the machine automatically 
+        gives you what you selected without any human involvement. Smart contracts work similarly 
+        but can handle much more complex transactions and rules.
+      </p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-cogs"></i> How Smart Contracts Power Our Voting System</h2>
+      <p>
+        In this voting application, we use several smart contract functions:
+      </p>
+      
+      <h3><i class="fas fa-user-check"></i> 1. Voter Registration and Verification</h3>
+      <p>
+        The contract maintains a list of registered voters and checks if a voter has already cast a ballot, 
+        preventing double voting.
+      </p>
+      
+      <h3><i class="fas fa-users"></i> 2. Candidate Management</h3>
+      <p>
+        Administrators can add candidates to the ballot, and the contract stores candidate information 
+        and their vote counts.
+      </p>
+      
+      <h3><i class="fas fa-vote-yea"></i> 3. Vote Casting</h3>
+      <p>
+        When a voter submits their choice, the contract verifies their eligibility, records their vote, 
+        marks them as having voted, and increments the candidate's vote count - all in one atomic transaction.
+      </p>
+      
+      <h3><i class="fas fa-chart-bar"></i> 4. Vote Counting and Results</h3>
+      <p>
+        The contract automatically tallies votes as they come in, making results available in real-time 
+        without any possibility of miscounting.
+      </p>
+      
+      <h3><i class="fas fa-clock"></i> 5. Voting Period Management</h3>
+      <p>
+        The contract enforces voting time frames, only allowing votes to be cast during the designated period.
+      </p>
+    </div>
+    
+    <div class="content-section">
+      <h2><i class="fas fa-lightbulb"></i> Why Smart Contracts Are Transformative for Voting</h2>
+      <p>
+        Smart contracts bring three revolutionary benefits to voting systems:
+      </p>
+      
+      <ul class="feature-list">
+        <li><i class="fas fa-robot"></i> <strong>No human intervention</strong> in counting or processing votes, eliminating bias and error</li>
+        <li><i class="fas fa-gavel"></i> <strong>Automatic enforcement</strong> of all rules (like preventing duplicate votes)</li>
+        <li><i class="fas fa-search"></i> <strong>Full transparency</strong> in how votes are processed and counted</li>
+      </ul>
+      
+      <p>
+        This creates a system where voters don't need to trust the people running the election - 
+        they can verify independently that their vote was counted correctly and that all rules were followed.
+      </p>
+    </div>
+    
+    <div class="chapter-nav">
+      <a href="/docs/page2.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Blockchain Fundamentals</a>
+      <a href="/docs" class="btn btn-secondary"><i class="fas fa-home"></i> Main Menu</a>
+      <a href="/docs/page4.html" class="btn btn-primary">Continue to Web3 & MetaMask <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <div class="page-footer">
+      <p>Page 3 of 8</p>
+    </div>
+  </div>
+</body>
+</html> 
